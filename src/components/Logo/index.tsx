@@ -6,7 +6,7 @@ export function Logo() {
     <div className={styles.logo}>
       <a className={styles.logoLink} href='#'>
         <AlarmClock />
-        <span>Ciclos</span>
+        <span>Ciclo</span>
       </a>
     </div>
   );
