@@ -7,11 +7,14 @@ import type { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 
 import styles from './styles.module.css';
+import { getNextCycle } from '../../utils/getNextCycle';
 
 export function MainForm() {
-  const { setState } = useTaskContext();
-
+  const { state, setState } = useTaskContext();
   const [taskName, setTaskName] = useState('');
+
+  // ciclos
+  const nextCycle = getNextCycle(state.currentCycle);
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -37,7 +40,7 @@ export function MainForm() {
         ...prevState,
         config: { ...prevState.config },
         activeTask: newTask,
-        currentCycle: 1, // verificar
+        currentCycle: nextCycle,
         secondsRemaining, // verificar
         formattedSecondsRemaining: '00:00', // verificar
         tasks: [...prevState.tasks, newTask],
@@ -58,7 +61,7 @@ export function MainForm() {
         />
       </div>
       <div className={styles.formRow}>
-        <span>Lorem ipsum dolor sit amet.</span>
+        <span>Próximo tempo de foco é de 25min</span>
       </div>
       <div className={styles.formRow}>
         <Cycles />
