@@ -66,9 +66,13 @@ export function MainForm() {
       <div className={styles.formRow}>
         <span>Próximo tempo de foco é de 25min</span>
       </div>
-      <div className={styles.formRow}>
-        <Cycles />
-      </div>
+
+      {state.currentCycle > 0 && (
+        <div className={styles.formRow}>
+          <Cycles />
+        </div>
+      )}
+
       <div className={styles.formRow}>
         <DefaultButton icon={<PlayCircleIcon />} color='white' />
       </div>
