@@ -7,12 +7,13 @@ import type { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
-import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 
 import styles from './styles.module.css';
+import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
+import { Tips } from '../Tips';
 
 export function MainForm() {
-  const { state, setState } = useTaskContext();
+  const { state, dispatch } = useTaskContext();
   const [taskName, setTaskName] = useState('');
 
   // ciclos
@@ -36,19 +37,14 @@ export function MainForm() {
       type: nextCycleType,
     };
 
-    const secondsRemaining = newTask.duration * 60;
+    dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
+  }
 
-    setState(prevState => {
-      return {
-        ...prevState,
-        config: { ...prevState.config },
-        activeTask: newTask,
-        currentCycle: nextCycle,
-        secondsRemaining, // verificar
-        formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining), // verificar
-        tasks: [...prevState.tasks, newTask],
-      };
-    });
+  function handleInterruptTask(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) {
+    e.preventDefault();
+    dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
   }
 
   return (
@@ -64,8 +60,9 @@ export function MainForm() {
           disabled={!!state.activeTask}
         />
       </div>
+
       <div className={styles.formRow}>
-        <span>Próximo tempo de foco é de 25min</span>
+        <Tips />
       </div>
 
       {state.currentCycle > 0 && (
@@ -81,6 +78,7 @@ export function MainForm() {
             title='Iniciar nova tarefa'
             type='submit'
             icon={<PlayCircleIcon />}
+            key='submit_button'
           />
         ) : (
           <DefaultButton
@@ -89,6 +87,8 @@ export function MainForm() {
             type='button'
             color='red'
             icon={<StopCircleIcon />}
+            onClick={handleInterruptTask}
+            key='button_button'
           />
         )}
       </div>
