@@ -9,6 +9,7 @@ import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 import { Tips } from '../Tips';
+import { showMessage } from '../../adapters/showMessage';
 
 import styles from './styles.module.css';
 
@@ -22,8 +23,10 @@ export function MainForm() {
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    showMessage.dismiss();
+
     if (!taskName.trim()) {
-      alert('Digite o nome da tarefa');
+      showMessage.warn('Digite o nome da tarefa');
       return;
     }
 
@@ -38,12 +41,14 @@ export function MainForm() {
     };
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
+    showMessage.success(`Tarefa iniciada!`);
   }
 
   function handleInterruptTask(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) {
     e.preventDefault();
+    showMessage.error(`Tarefa interrompida!`);
     dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
   }
 
@@ -51,7 +56,7 @@ export function MainForm() {
     <form onSubmit={handleCreateNewTask} className={styles.form} action=''>
       <div className={styles.formRow}>
         <DefaultInput
-          labelText='task'
+          labelText='tarefa'
           id='meuInput'
           type='text'
           placeholder='Digite algo...'

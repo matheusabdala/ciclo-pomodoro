@@ -21,7 +21,6 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
 
     if (countDownSeconds <= 0) {
       if (playBeepRef.current) {
-        console.log('tocando audio');
         playBeepRef.current();
         playBeepRef.current = null;
       }
