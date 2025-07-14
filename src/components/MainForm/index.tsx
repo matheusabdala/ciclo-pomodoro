@@ -15,7 +15,8 @@ import styles from './styles.module.css';
 
 export function MainForm() {
   const { state, dispatch } = useTaskContext();
-  const [taskName, setTaskName] = useState('');
+  const lastTaskName = state.tasks[state.tasks.length - 1]?.name || '';
+  const [taskName, setTaskName] = useState(lastTaskName);
 
   // ciclos
   const nextCycle = getNextCycle(state.currentCycle);
