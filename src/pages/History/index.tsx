@@ -9,12 +9,15 @@ import { getTaskStatus } from '../../utils/getTaskStatus';
 import { sortTasks, type SortTasksOptions } from '../../utils/sortTasks';
 import { useEffect, useState } from 'react';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
+import { ConfirmModal } from '../../components/ConfirmModal';
 
 import styles from './styles.module.css';
 
 export function History() {
   const { state, dispatch } = useTaskContext();
   const hasTasks = state.tasks.length > 0;
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [sortTasksOptions, setSortTaskOptions] = useState<SortTasksOptions>(
     () => {
@@ -51,9 +54,16 @@ export function History() {
   }
 
   function handleResetHistory() {
-    if (!confirm('Tem certeza')) return;
+    setIsModalOpen(true);
+  }
 
+  function handleConfirmReset() {
     dispatch({ type: TaskActionTypes.RESET_STATE });
+    setIsModalOpen(false);
+  }
+
+  function handleCancelReset() {
+    setIsModalOpen(false);
   }
 
   return (
@@ -132,6 +142,12 @@ export function History() {
           </p>
         )}
       </Container>
+      <ConfirmModal
+        text='Tem certeza que deseja apagar todo o histórico?'
+        isOpen={isModalOpen}
+        onConfirm={handleConfirmReset}
+        onCancel={handleCancelReset}
+      />
     </MainTemplate>
   );
 }
