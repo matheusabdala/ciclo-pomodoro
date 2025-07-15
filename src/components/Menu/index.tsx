@@ -1,6 +1,7 @@
 import {
   HistoryIcon,
   HouseIcon,
+  ListChecksIcon,
   MoonIcon,
   SettingsIcon,
   SunIcon,
@@ -63,6 +64,14 @@ export function Menu() {
         title='Configurações'
       >
         <SettingsIcon />
+      </RouterLink>
+      <RouterLink
+        className={styles.menuLink}
+        href='/tasklist/'
+        aria-label='Lista de Tarefas'
+        title='Lista de Tarefas'
+      >
+        <ListChecksIcon />
       </RouterLink>
       <a
         className={styles.menuLink}

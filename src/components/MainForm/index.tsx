@@ -27,7 +27,9 @@ export function MainForm() {
     showMessage.dismiss();
 
     if (!taskName.trim()) {
-      showMessage.warn('Digite o nome da tarefa');
+      showMessage.warn(
+        'Você precisa digitar o nome da tarefa antes de começar.',
+      );
       return;
     }
 
@@ -42,14 +44,16 @@ export function MainForm() {
     };
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
-    showMessage.success(`Tarefa iniciada!`);
+    showMessage.success(`Tarefa iniciada com sucesso! Bom foco. 🚀`);
   }
 
   function handleInterruptTask(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) {
     e.preventDefault();
-    showMessage.error(`Tarefa interrompida!`);
+    showMessage.error(
+      `Tarefa interrompida. Tudo bem, recomece quando estiver pronto.`,
+    );
     dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
   }
 
@@ -57,10 +61,10 @@ export function MainForm() {
     <form onSubmit={handleCreateNewTask} className={styles.form} action=''>
       <div className={styles.formRow}>
         <DefaultInput
-          labelText='tarefa'
+          labelText='Nome da tarefa'
           id='meuInput'
           type='text'
-          placeholder='Digite algo...'
+          placeholder='Ex: Estudar React'
           value={taskName}
           onChange={e => setTaskName(e.target.value)}
           disabled={!!state.activeTask}
@@ -80,16 +84,16 @@ export function MainForm() {
       <div className={styles.formRow}>
         {!state.activeTask ? (
           <DefaultButton
-            aria-label='Iniciar nova tarefa'
-            title='Iniciar nova tarefa'
+            aria-label='Começar tarefa'
+            title='Começar tarefa'
             type='submit'
             icon={<PlayCircleIcon />}
             key='submit_button'
           />
         ) : (
           <DefaultButton
-            aria-label='Interroper tarefa atual'
-            title='Interroper tarefa atual'
+            aria-label='Interromper tarefa'
+            title='Interromper tarefa atual'
             type='button'
             color='red'
             icon={<StopCircleIcon />}

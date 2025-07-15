@@ -1,0 +1,125 @@
+.buttonContainer button {
+  min-width: auto;
+  margin: 0;
+  padding: 1rem;
+}
+
+.buttonContainer button svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.responsiveTable {
+  overflow-x: auto;
+  border-radius: 0.8rem;
+}
+
+.responsiveTable table {
+  width: 100%;
+  min-width: 34rem;
+
+  font-size: 1.6rem;
+  border-collapse: collapse;
+}
+
+.responsiveTable th {
+  background-color: var(--gray-600);
+}
+
+.responsiveTable td {
+  background-color: var(--gray-800);
+}
+
+.responsiveTable th,
+.responsiveTable td {
+  border-bottom: 0.2rem solid var(--gray-700);
+  text-align: center;
+  padding: 1.6rem;
+}
+
+.thSort {
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.thSort:hover {
+  filter: brightness(80%);
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.formRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.taskCell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.checkButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.checkButton:hover {
+  opacity: 1;
+}
+
+.checkIcon {
+  color: var(--green-500);
+  width: 2rem;
+  height: 2rem;
+}
+
+.taskCell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.6rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.taskRow:hover {
+  background-color: var(--gray-700);
+}
+
+.checkWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  opacity: 0.3;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.taskRow:hover .checkWrapper {
+  opacity: 1;
+}
+
+.checkIcon {
+  color: var(--green-500);
+  width: 2rem;
+  height: 2rem;
+}

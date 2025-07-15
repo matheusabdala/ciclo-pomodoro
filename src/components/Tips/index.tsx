@@ -1,6 +1,7 @@
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
+import styles from './styles.module.css';
 
 export function Tips() {
   const { state } = useTaskContext();
@@ -8,18 +9,23 @@ export function Tips() {
   const tipsForWhenActiveTask = {
     workTime: (
       <span>
-        Foque por <strong> {state.config.workTime}min</strong>
+        ⏳ Concentre-se pelos próximos{' '}
+        <strong>{state.config.workTime}min.</strong>
       </span>
     ),
     shortBreakTime: (
       <span>
-        Descanse por
-        <strong> {state.config.shortBreakTime}min</strong>
+        🧘 Pausa curta: aproveite
+        <strong> {state.config.shortBreakTime}min</strong> para relaxar
       </span>
     ),
     longBreakTime: (
       <span>
-        Descanso longo de <strong>{state.config.longBreakTime}min</strong>
+        🌴 Hora de um descanso maior
+        <strong>
+          {' '}
+          {state.config.longBreakTime}min para recarregar as energias
+        </strong>
       </span>
     ),
   };
@@ -30,27 +36,28 @@ export function Tips() {
   const tipsForNoActiveTask = {
     workTime: (
       <span>
-        Próximo ciclo é de <strong> {state.config.workTime}min de foco</strong>
+        🎯 O próximo ciclo será de{' '}
+        <strong> {state.config.workTime}min de foco</strong>
       </span>
     ),
     shortBreakTime: (
       <span>
-        Próximo descanso é de
-        <strong> {state.config.shortBreakTime}min</strong>
+        🧘 Em seguida vem uma pausa rápida de
+        <strong> {state.config.shortBreakTime}min.</strong>
       </span>
     ),
     longBreakTime: (
       <span>
-        Próximo ciclo é de
-        <strong> {state.config.longBreakTime}min de descanso longo</strong>
+        🌴 O próximo ciclo será um descanso longo de
+        <strong> {state.config.longBreakTime}minutos</strong>
       </span>
     ),
   };
 
   return (
-    <>
+    <div className={styles.textCenter}>
       {!!state.activeTask && tipsForWhenActiveTask[state.activeTask.type]}
       {!state.activeTask && tipsForNoActiveTask[nextCycleType]}
-    </>
+    </div>
   );
 }
