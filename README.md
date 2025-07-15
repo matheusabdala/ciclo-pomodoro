@@ -6,7 +6,8 @@ busca promover produtividade com uma experiência fluida, leve e intuitiva.
 
 ## 🚀 Demonstração
 
-> _([(https://ciclo-pomodoro.vercel.app/])_
+<a href="https://ciclo-pomodoro.vercel.app/" target="_blank">🌐 Acesse a
+demonstração</a>
 
 ![Preview do App](./public/images/ciclo-pomodoro.jpg)
 
@@ -40,7 +41,7 @@ busca promover produtividade com uma experiência fluida, leve e intuitiva.
 
 ## 🧩 Estrutura de Pastas
 
-````bash
+```bash
 src/
 ├── components/       # Componentes reutilizáveis (UI, layouts, botões, inputs)
 ├── contexts/         # Context API para controle global dos ciclos
@@ -56,20 +57,16 @@ src/
 
 1. Clone o repositório:
 
-```bash
 git clone https://github.com/matheusabdala/ciclo-pomodoro.git
 cd ciclo-pomodoro
 
-
 2. Instale as dependências:
 
-```bash
 npm install
 
 3. Rode o servidor de desenvolvimento:
 
-```bash
 npm run dev
 
 Abra no navegador: http://localhost:5173
-````
+```
