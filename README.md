@@ -6,7 +6,7 @@ busca promover produtividade com uma experiência fluida, leve e intuitiva.
 
 ## 🚀 Demonstração
 
-> _(Insira aqui o link do deploy se tiver usado Vercel, Netlify ou outro)_
+> _([(https://ciclo-pomodoro.vercel.app/])_
 
 ![Preview do App](./public/images/ciclo-pomodoro.jpg)
 
