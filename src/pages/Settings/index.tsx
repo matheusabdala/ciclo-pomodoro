@@ -46,6 +46,7 @@ export function Settings() {
       formErrors.forEach(error => {
         showMessage.error(error);
       });
+      return;
     }
 
     dispatch({

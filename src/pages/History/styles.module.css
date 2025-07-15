@@ -44,3 +44,85 @@
 .thSort:hover {
   filter: brightness(80%);
 }
+
+/* Adicione esses estilos ao seu arquivo styles.module.css */
+
+.paginationContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--text-default);
+}
+
+.paginationInfo {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+}
+
+.paginationControls {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.paginationButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--gray-400);
+  background-color: var(--text-default);
+  color: var(--gray-800);
+  cursor: pointer;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.paginationButton:hover:not(:disabled) {
+  background-color: var(--text-default);
+  border-color: var(--gray-700);
+}
+
+.paginationButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--text-default);
+}
+
+.paginationButtonActive {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.paginationButtonActive:hover {
+  filter: brightness(80%);
+  border-color: var(--text-default);
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  .paginationContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .paginationInfo {
+    text-align: center;
+  }
+
+  .paginationControls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .paginationButton {
+    min-width: 2.5rem;
+    height: 2.5rem;
+  }
+}

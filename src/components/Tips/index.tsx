@@ -1,8 +1,6 @@
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
-import styles from './styles.module.css';
-
 export function Tips() {
   const { state } = useTaskContext();
   // tips
@@ -55,7 +53,7 @@ export function Tips() {
   };
 
   return (
-    <div className={styles.textCenter}>
+    <div>
       {!!state.activeTask && tipsForWhenActiveTask[state.activeTask.type]}
       {!state.activeTask && tipsForNoActiveTask[nextCycleType]}
     </div>

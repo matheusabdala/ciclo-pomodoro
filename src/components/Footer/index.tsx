@@ -7,10 +7,14 @@ export function Footer() {
       <RouterLink href='/about-pomodoro/'>
         Entenda como funciona a técnica pomodoro 🍅
       </RouterLink>
-      <RouterLink href='/'>
+      <a
+        href='https://www.linkedin.com/in/matheus-m-abdala/'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
         Ciclo Pomodoro &copy; {new Date().getFullYear()} - Feito por Matheus
         Abdala 👨‍💻
-      </RouterLink>
+      </a>
     </footer>
   );
 }
