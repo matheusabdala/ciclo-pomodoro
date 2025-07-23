@@ -8,7 +8,7 @@ export function Footer() {
         Entenda como funciona a técnica pomodoro 🍅
       </RouterLink>
       <a
-        href='https://www.linkedin.com/in/matheus-m-abdala/'
+        href='https://github.com/matheusabdala/ciclo-pomodoro'
         target='_blank'
         rel='noopener noreferrer'
       >
